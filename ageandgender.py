@@ -16,19 +16,19 @@ st.subheader("Upload your image(s) to predict the age and gender of the subject.
 # Sidebar for additional details
 st.sidebar.title("About the App")
 st.sidebar.info(
-    
-   ''' This application uses a Convolutional Neural Network (CNN) to predict:
+    '''
+    This application uses a Convolutional Neural Network (CNN) to predict:
     - **Gender**: Male or Female
     - **Age**: Estimated age of the person
     
     **How it works**:
-    1. Upload an image in  JPG, JPEG, PNG format.
+    1. Upload an image in JPG, JPEG, PNG format.
     2. The model processes the image and predicts the results.
     
     Developed by: **Haris Faheem and Hassan Nasir**
     
-    Contact: [LinkedIn Profile](https://www.linkedin.com/in/haris-faheem-1376982a3/)'''
-    
+    Contact: [LinkedIn Profile](https://www.linkedin.com/in/haris-faheem-1376982a3/)
+    '''
 )
 
 # Function to preprocess and predict
@@ -78,8 +78,11 @@ if uploaded_files:
         results_df = pd.DataFrame(results)
         st.dataframe(results_df)
         
-        # Download button
+        # Debugging step: Display CSV size
         csv = results_df.to_csv(index=False).encode("utf-8")
+        st.write(f"CSV Size: {len(csv)} bytes")  # Debug information
+        
+        # Download button
         st.download_button(
             label="📥 Download Predictions",
             data=csv,
